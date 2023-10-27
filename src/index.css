@@ -149,6 +149,8 @@ a , a:hover{
 @media (max-width: 900.98px){
     .key {
         font-size: 10px !important;
+        /* padding: 0 10px !important; */
+        opacity: 0 !importantgit;
     }
 
 }
