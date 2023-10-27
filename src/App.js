@@ -1,5 +1,5 @@
 import './App.css';
-import {createBrowserRouter} from 'react-router-dom';
+import {createHashRouter} from 'react-router-dom';
 import {RouterProvider} from 'react-router-dom';
 
 import { Toaster } from 'react-hot-toast';
@@ -33,7 +33,7 @@ import Resetcode from './component/ResetCode/ResetCode'
 
 
 
-let routers = createBrowserRouter([
+let routers = createHashRouter([
   {path:'/' , element:<Layout/> , children:[
     {index:true , element: <ProtectedRoute><Home/></ProtectedRoute> },
     {path:'cart' , element: <ProtectedRoute><Cart/></ProtectedRoute>},

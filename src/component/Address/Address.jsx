@@ -27,7 +27,7 @@ export default function Address() {
       console.log(response);
       
      
-      window.location.href = response?.data.session.url;
+      window.location.href = response?.data?.session.url;
       setnumberitems(0)
 
 

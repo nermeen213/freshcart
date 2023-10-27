@@ -64,7 +64,7 @@ export default function Allorders() {
   <title>all orders</title>
 </Helmet>
    <div className="row g-3">
-    <h2 className='fw-bolder h1 text-center text-main font'> All Orders</h2>
+    <h2 className='fw-bolder h1 text-center text-main font fs-3'> All Orders</h2>
     {userOrders.map(function(order,idx){
       return <div key={idx} className='col-md-6'>
 

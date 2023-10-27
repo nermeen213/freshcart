@@ -142,3 +142,13 @@ a , a:hover{
     border-radius: 1rem;
     color: #fff !important;
 }
+
+
+
+
+@media (max-width: 900.98px){
+    .key {
+        font-size: 10px !important;
+    }
+
+}
