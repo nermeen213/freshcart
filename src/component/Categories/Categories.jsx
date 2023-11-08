@@ -43,7 +43,7 @@ export default function Categories() {
   {data?.data.data?.map((category)=>
 <div key={category._id} className="col-md-3 productCAT m-3">
 <Link to={`/specificcategories/${category._id}`} >
-    <img src={category.image} alt="" className='w-100' height={300}/>
+    <img src={category.image} alt="" className='w-100 ' height={300}/>
     <div className='text-center'>
       <h3 className='pt-3 h5 fw-bolder text-main'>{category.name}</h3>
 

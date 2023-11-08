@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { CartContext } from '../Context/CartContext';
 import { Audio } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 export default function Address() {
@@ -25,9 +26,16 @@ export default function Address() {
       setisLoading(true)
       let response = await onlinePayment(cardId,'http://localhost:3000',values)
       console.log(response);
+      toast.success('The payment process was completed successfully',{
+        duration: 3000 ,
+        position: "Bottom right",
+        className: 'toast-message',
+        
+        
+      })
       
      
-      window.location.href = response?.data?.session.url;
+      window.location.href = response?.data?.session?.url;
       setnumberitems(0)
 
 

@@ -21,7 +21,7 @@ let{numberitems ,wishlistCount}=useContext(CartContext)
     navigate('/login')
   }
 
-
+ 
   return <>
     <nav className="navbar navbar-expand-lg py-3 bg-light mainnav fixed-top ">
   <div className="container-fluid">
