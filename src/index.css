@@ -139,7 +139,7 @@ a , a:hover{
 }
 .active {
     background-color: var(--main-color) !important;
-    border-radius: 1rem;
+    border-radius: 10%;
     color: #fff !important;
 }
 
@@ -150,7 +150,7 @@ a , a:hover{
     .key {
         font-size: 7px !important;
         /* padding: 0 10px !important; */
-        opacity: 0 !important;
+        opacity: 1 !important;
     }
 
 }

@@ -45,7 +45,7 @@ let x =Yup.object({
 
   return <>
    <div className="row w-75 mx-auto ">
-    <div className="col-md-12 bg-main-light ">
+    <div className="col-md-12 bg-main-light p-4  ">
       <form onSubmit={formik.handleSubmit}>
        
         <label htmlFor="email">Enter Your Email :</label>

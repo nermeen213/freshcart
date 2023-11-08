@@ -95,11 +95,12 @@ let passwordRegex= /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   visible={true}
 />
       </button>: <>
-      <div className='d-flex align-items-center'>
+      <div className='d-flex align-items-center '>
 
-      <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white mx-2  '>Login</button><Link to={'/register'} className='btn'>Register Now</Link>
-      {/* <Link to={'/forgetpassword'} className='btn'>forget password</Link> */}
+      <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white mx-2  '>Login</button>      <Link to={'/forgetpassword'} className='btn py-4'>Forget Password</Link>
+
       </div>
+      <Link to={'/register'} className='btn'>Register Now</Link>
 
       </>
 }

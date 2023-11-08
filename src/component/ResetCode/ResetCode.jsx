@@ -1,72 +1,42 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import Style from './ResetCode.module.css'
-import { useFormik } from 'formik'
-import axios from 'axios'
-import { ThreeDots } from 'react-loader-spinner'
-import { toast, ToastContainer } from "react-toastify";
-import { useNavigate } from 'react-router-dom'
-import * as Yup from 'yup'
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
+export default function Resetcode() {
+    let navigate =useNavigate();
+    async function resetCode(){
+        let codeInput =document.getElementById('code').value;
+        try {
+            let{data}=await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`,{
+                resetCode:codeInput
+               });
+              console.log(data);
 
-export default function VerifyResetCode() {
-  let navigate = useNavigate()
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
-
-
-  async function VerifySubmit(values) {
-    setLoading(true)
-    let { data } = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`, values)
-
-      .catch((err) => {
-        setError(err.data.status);
-        setLoading(false)
-      })
-
-    if (data?.status === 'Success') {
-      console.log(data);
-      setLoading(false)
-      toast.success("🦄 Next reset your password", { autoClose: 2000 });
-      setTimeout(() => {
-        navigate('/changepassword')
-      }, 3000);
-    }
-  }
-
-  let validationSchema = Yup.object({
-    resetCode: Yup.string('code inValid').required(' resetCode is required '),
-  })
-
-  let Formik = useFormik({
-    initialValues: {
-      resetCode: ''
-    }, validationSchema, onSubmit: VerifySubmit
-  })
-
-  return <>
-    <ToastContainer />
-    <div className={`bg-main-light rounded py-3 shadow mx-auto ${Style.change_width}`}>
-      <h1 className="text-center h3">Forgot Password</h1>
-      {error ? <div className="alert alert-danger">{error}</div> : ''}
-      <form onSubmit={Formik.handleSubmit} className='vstack gap-3 w-75 mx-auto '>
-        <label htmlFor="resetCode">Reset Code:</label>
-        <input onChange={Formik.handleChange} onBlur={Formik.handleBlur} placeholder='Your Reset Code...' value={Formik.values.resetCode} id="resetCode" type="text" name="resetCode" className="form-control " />
-        {Formik.errors.resetCode && Formik.touched.resetCode ? <div className="alert alert-danger">{Formik.errors.resetCode}</div> : ''}
-        {!loading ? <button disabled={!(Formik.isValid && Formik.dirty)} type="submit" className="btn mt-4 text-white bg-main"> Confirm </button> :
-          <button type="button" className="btn mt-4 text-white bg-main">
-            <ThreeDots
-              height="25"
-              width="55"
-              radius="5"
-              color="#ffff"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
-              visible={true}
-            />
-          </button>
+               if(data?.status=="Success"){
+                navigate('/changepassword')
+                console.log('hello');
+             }
+               
+        } catch (error) {
+            console.log(error);
         }
-      </form>
-    </div>
-  </>
+     
+
+
+    }
+
+    return (
+        <>
+         <div className="w-75 mx-auto bg-main-light">
+            <div className=" p-4">
+                <label htmlFor='code' className='pb-3'>Enter Your code</label>
+                <input type="number" name='code' id='code' className='form-control bg-white '/>
+                 <button onClick={resetCode} className='btn bg-main text-white my-3 px-3'>Send</button>
+            </div>
+
+        </div>
+            
+        </>
+    )
 }

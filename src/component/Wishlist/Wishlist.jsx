@@ -79,7 +79,7 @@ if (data?.status == "success") {
     setWishlistCount(null)
   }
   else {
-    setWishlistCount(data.count)
+    setWishlistCount(data?.count)
   }
 }
 }
