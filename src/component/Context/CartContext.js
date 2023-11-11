@@ -7,10 +7,12 @@ export let CartContext=createContext();
 
 export default function CartContextProvider(props){
 
-  const [wishlistCount, setWishlistCount] = useState(0);
+const [wishlistCount, setWishlistCount] = useState(0);
 
-  const [cardId, setcardId] = useState(null)
+const [cardId, setcardId] = useState(null)
 const [numberitems, setnumberitems] = useState(0)
+   //*************************category ************************************** */
+
 
 
 function getCategory(id){
@@ -18,6 +20,10 @@ function getCategory(id){
   
 
 }
+
+
+   //*************************Add TO Cart ************************************** */
+
  async function getproductnumber(){
   let{data}=await getLoggedUserCart()
   if(data?.status==='success'){
@@ -36,25 +42,6 @@ function getCategory(id){
   let headers ={
     token:localStorage.getItem('userToken')
   };
-
-   async function getNumberWish(){
-
-    let {data}=await addWishList();
-    if(data?.status==='success'){
-     
-      
-      setWishlistCount(data?.count)
-     
-    }
-   
-   }
-   useEffect(()=>{
-
-    getNumberWish()
-
-   })
-
-
 
    function addToCart(x){
     return axios.post(`https://ecommerce.routemisr.com/api/v1/cart`,{       //url
@@ -99,6 +86,7 @@ function getCategory(id){
     }).then((res)=>res).catch((err)=>err);
    }
 
+   //*************************WishList************************************** */
 
    function getWishlist(id){
     return axios.post(`https://ecommerce.routemisr.com/api/v1/wishlist`,{
@@ -118,6 +106,27 @@ function getCategory(id){
    }
 
 
+   async function getNumberWish(){
+
+    let {data}=await addWishList();
+    // console.log(data?.count);
+
+    if(data?.status==='success'){
+      
+      setWishlistCount(data?.count)
+      // console.log(wishlistCount);
+
+    }
+   
+   }
+   useEffect(()=>{
+
+    getNumberWish()
+
+
+   },[wishlistCount])
+
+
 
    function deleteWish(id){
     return axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,{
@@ -125,6 +134,9 @@ function getCategory(id){
     }).then((res)=>res).catch((err)=>err);
 
    }
+
+
+   //*************************payment ************************************** */
 
    function onlinePayment(id ,url, values){
     return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${url}`,{ 
@@ -157,10 +169,11 @@ function getCategory(id){
 
    },[])
 
+   //*************************payment ************************************** */
 
 
 
- return <CartContext.Provider value={{cashPayment,setWishlistCount,wishlistCount,cardId,onlinePayment,deleteWish,addWishList,setnumberitems,numberitems,addToCart,getLoggedUserCart,removeProduct ,updateProduct,clearCard,getWishlist}}>
+ return <CartContext.Provider value={{cashPayment,setWishlistCount,wishlistCount,cardId,onlinePayment,deleteWish,addWishList,addWishList,setnumberitems,numberitems,addToCart,getLoggedUserCart,removeProduct ,updateProduct,clearCard,getWishlist}}>
     {props.children}
   </CartContext.Provider>
 

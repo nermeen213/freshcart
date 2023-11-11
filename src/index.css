@@ -57,6 +57,13 @@
 .wish {
     color: red !important;
 }
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
 .navbar {
     width: 100%;
     position: fixed !important;
@@ -139,18 +146,29 @@ a , a:hover{
 }
 .active {
     background-color: var(--main-color) !important;
-    border-radius: 10%;
+    border-radius: 5px;
     color: #fff !important;
 }
 
 
 
 
+
 @media (max-width: 900.98px){
     .key {
-        font-size: 7px !important;
+        font-size: 10px !important;
         /* padding: 0 10px !important; */
         opacity: 1 !important;
+    }
+    .navbar-collapse {
+        flex-direction: column !important;
+     
+    }
+    .active {
+       padding: 5px 20px!important;
+       margin: 10px 0;
+
+
     }
 
 }

@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 
 
 export default function FeaturedProduct() {
- let {addToCart,setnumberitems,getWishlist,setWishlistCount} =useContext(CartContext);
+ let {addToCart,setnumberitems,getWishlist,addWishList,setWishlistCount} =useContext(CartContext);
 
 
  async function addProduct(productId){
@@ -41,9 +41,11 @@ export default function FeaturedProduct() {
 
     
     let {data} =await getWishlist(id)
-    if(data.status==='success'){
+    // console.log(data);
+    await getWishItem();
+    if(data?.status==='success'){
     
-      setWishlistCount(data?.count)
+      
       toast.success('Product added successfully to your wishlist',{
         duration: 3000 ,
         position: "bottom-right",
@@ -55,6 +57,25 @@ export default function FeaturedProduct() {
    }
    
   }
+
+
+
+
+ async function getWishItem(){
+  let{data}=await addWishList()
+  if (data?.status == "success") {
+    if (data.count == 0) {
+      setWishlistCount(0)
+    }
+    else {
+      setWishlistCount(data?.count)
+    }
+  }
+
+  }
+  useEffect(()=>{
+    getWishItem()
+  })
   // **********************************
   function getFeaturedProduct(){
 

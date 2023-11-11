@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from './Products.module.css';
 import { useQuery } from 'react-query';
 import axios from 'axios';
@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
 
 export default function Products() {
 
-  let {addToCart,getWishlist,setnumberitems} =useContext(CartContext);
+  let {addToCart,getWishlist,setnumberitems,addWishList,setWishlistCount} =useContext(CartContext);
   
 
 
@@ -46,7 +46,8 @@ export default function Products() {
 
    async function getWishProducts(id){
     let {data} =await getWishlist(id)
-    if(data.status==='success'){
+    await getWishItem()
+    if(data?.status==='success'){
       
       toast.success('Product added successfully to your wishlist',{
         duration: 3000 ,
@@ -62,6 +63,23 @@ export default function Products() {
    }
    
   }
+
+
+  async function getWishItem(){
+    let{data}=await addWishList()
+    if (data?.status == "success") {
+      if (data.count == 0) {
+        setWishlistCount(0)
+      }
+      else {
+        setWishlistCount(data?.count)
+      }
+    }
+  
+    }
+    useEffect(()=>{
+      getWishItem()
+    })
 
 // **********************************
 

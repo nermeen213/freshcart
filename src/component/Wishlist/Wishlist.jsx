@@ -20,10 +20,6 @@ export default function Wishlist() {
   const [wishItems, setwishItems] = useState(null)
 
 
- 
-  
-
-  // 
 
   async function addProduct(productId){
     try {
@@ -44,7 +40,7 @@ export default function Wishlist() {
   
       })
 
-      setWishlistCount(data?.count)
+      // setWishlistCount(data?.count)
   
     }else{
       
@@ -61,7 +57,7 @@ export default function Wishlist() {
      
    }
 
-  // 
+  
 
 
 async function getLoggedWishCart(){
@@ -92,16 +88,18 @@ useEffect(()=>{
 
 async function deleteProduct(id){
   try {
-    // setisLoading(true)
+    // setisLoading(false)
    
   let{data}= await deleteWish(id);
   setwishItems(data)
   
-  
+  // setisLoading(false)
+
   
   await getLoggedWishCart()
-  setWishlistCount(data?.count)
-  
+  // setWishlistCount(data?.count)
+  // setisLoading(false)
+
 
   } catch (error) {
     console.log('error',error)
