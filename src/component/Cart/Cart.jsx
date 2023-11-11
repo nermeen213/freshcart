@@ -40,6 +40,8 @@ async function updateItem(id ,count){
   let {data}=await updateProduct(id,count)
  
   setCartDetails(data)
+  console.log(CartDetails);
+  
 
 }
 

@@ -28,10 +28,10 @@ let{numberitems ,wishlistCount}=useContext(CartContext)
     <Link className="navbar-brand" to="/">
       <img src={logo} alt="fresh cart logo" />
       </Link>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse d-flex align-items-center justify-content-between bg-light mx-0  " id="navbarSupportedContent">
+    <div class="collapse navbar-collapse bg-light " id="navbarSupportedContent">
     <ul className="navbar-nav  mb-2 mb-lg-0 ">
 
 {userToken!== null? <>
@@ -55,7 +55,7 @@ let{numberitems ,wishlistCount}=useContext(CartContext)
  
  </>:''}
 </ul>
- <div className='d-flex align-items-center '>
+ <div className='d-flex align-items-center justify-content-center ms-auto'>
 
   
  {userToken!== null?

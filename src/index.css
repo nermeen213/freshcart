@@ -161,7 +161,7 @@ a , a:hover{
         opacity: 1 !important;
     }
     .navbar-collapse {
-        flex-direction: column !important;
+        /* flex-direction: column !important; */
      
     }
     .active {

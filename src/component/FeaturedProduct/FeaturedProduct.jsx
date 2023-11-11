@@ -97,7 +97,7 @@ export default function FeaturedProduct() {
 
 <Helmet>
   <meta name="description" content="" />
-  <title>Featured Products</title>
+  <title>Home</title>
 </Helmet>
  
  {isLoading?<div className='w-100 py-5 d-flex justify-content-center'>
