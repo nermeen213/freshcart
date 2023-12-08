@@ -61,8 +61,19 @@ let{numberitems ,wishlistCount}=useContext(CartContext)
  {userToken!== null?
       
       <ul className='list-unstyled d-flex justify-content-center align-items-center mb-1 '>
-       <li className='pe-3 fw-bolder '>{numberitems}<Link className="nav-link" to="/cart"><i className="fa-solid fa-cart-shopping fs-3  text-main"></i></Link></li>
-      <li className='pe-3 fw-bolder'>{wishlistCount}<Link className="nav-link" to="/wishlist"><i className="fa-solid fa-heart fs-2  text-danger "></i></Link></li>
+       <li className='pe-3 fw-bolder '><Link className="nav-link position-relative " to="/cart"> <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main">
+       {numberitems}
+       <span class="visually-hidden">unread messages</span>
+       </span><i className="fa-solid fa-cart-shopping fs-3  text-main"></i>
+     </Link>
+  </li>
+      <li className='pe-3 fw-bolder'>
+        <Link className="nav-link position-relative " to="/wishlist">
+       <span class="position-absolute  top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      {wishlistCount}
+      <span class="visually-hidden">unread messages</span>
+      </span><i className="fa-solid fa-heart fs-2  text-danger "></i>
+     </Link></li>
 
        
       
@@ -77,7 +88,7 @@ let{numberitems ,wishlistCount}=useContext(CartContext)
         
         <li  className="nav-item list-unstyled me-3 d-flex "  >
          <Link  to="/profile"> <i className="fa-solid fa-user fs-4 text-main px-3"></i> </Link>
-         <span className="nav-link cursor-pointer text-main fw-bolder btn  font" onClick={logout}>Sign Out</span>
+         <span className="nav-link cursor-pointer text-main fw-bolder btn  " onClick={logout}>Logout</span>
 
           </li>
          
@@ -85,10 +96,10 @@ let{numberitems ,wishlistCount}=useContext(CartContext)
 
        :<>
        <li className="nav-item px-2 ">
-       <Link className="nav-link fw-bolder  " to="/Login">Login</Link>
+       <Link className="nav-link fw-bolder text-main fs-6" to="/Login">Login</Link>
      </li>
      <li className="nav-item">
-       <Link className="nav-link fw-bolder" to="/register">Register</Link>
+       <Link className="nav-link fw-bolder text-main fs-6" to="/register">Register</Link>
      </li>
        </>}
        

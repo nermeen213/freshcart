@@ -4,12 +4,13 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup'
 import { CartContext } from '../Context/CartContext';
 import { Audio } from 'react-loader-spinner';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 
 export default function Address() {
   const [isLoading, setisLoading] = useState(false)
+  let navigate = useNavigate()
 
 
   let{onlinePayment,cardId ,setCartDetails,setnumberitems}=useContext(CartContext);
@@ -34,14 +35,17 @@ export default function Address() {
         
       })
       
-     
-      window.location.href = response?.data?.session?.url;
       setnumberitems(0)
-
+      window.location.href = response?.data?.session.url;
+      
+      
+     
+     
 
     } catch (error) {
       console.log('error',error);
       setisLoading(false)
+      
     }
 
  }

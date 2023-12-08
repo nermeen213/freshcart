@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 export default function Cart() {
   const [isloading, setisloading] = useState(false)
  
-let {getLoggedUserCart,removeProduct,updateProduct,clearCard ,setnumberitems}=useContext(CartContext);
+let {getLoggedUserCart,removeProduct,updateProduct,clearCard, numberitems,setnumberitems}=useContext(CartContext);
 const [CartDetails, setCartDetails] = useState(null)
    
 
@@ -37,12 +37,11 @@ useEffect(()=>{
 
 
 async function updateItem(id ,count){
-  let {data}=await updateProduct(id,count)
  
+  let {data}=await updateProduct(id,count)
+  let updateNumber=data?.data.products[0].count;
   setCartDetails(data)
-  console.log(CartDetails);
   
-
 }
 
  async function removeProductItems(id){
@@ -57,7 +56,7 @@ async function clearItems(){
   setisloading(true)
   let{data}=await clearCard()
   setisloading(false)
-  setCartDetails(null)
+  setCartDetails(0)
   setnumberitems(0)
  
 
@@ -74,6 +73,17 @@ if(CartDetails===null){
     wrapperStyle=""
     visible={true}
   />
+</div>
+}
+if(!numberitems){
+  return <div  className="w-100 mx-auto p-3 bg-main-light my-2">
+ <div className='d-flex justify-content-center align-items-center noCart flex-column  '>
+      <h3 className=' fw-semibold text-main font' >Not found any product in card  <i className="fa-solid fa-cart-plus"></i>  </h3>
+      <Link className='btn text-warning ' to={'/products'}>Get some products <i className='fas fa-arrow-right'></i></Link>
+   
+
+
+    </div>
 </div>
 }
 

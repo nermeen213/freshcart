@@ -10,9 +10,7 @@ import { Helmet } from 'react-helmet';
 // **********************************
 
 export default function Allorders() {
-  const [userOrders, setuserOrders] = useState(null)
- 
-
+  const [userOrders, setuserOrders] = useState(null);
  useEffect(()=>{
  
   let res =jwtDecode(localStorage.getItem('userToken'))

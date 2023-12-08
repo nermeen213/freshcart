@@ -14,7 +14,7 @@ export default function Brands() {
   }
   let {data,isError,isLoading }=useQuery('brands',getBrands)
   
-
+console.log(data);
 
   return <>
 

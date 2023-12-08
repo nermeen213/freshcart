@@ -31,7 +31,7 @@ let {isError,isLoading,data} = useQuery('gategorySlider',gategorySlider)
     {data?.data.data? <div className='py-4 pt-2 '>
       <Slider {...settings}>
       {data?.data.data.map((category)=><>
-      <img key={category._id} className='w-100 px-1' height={200} src={category.image}/>
+      <img key={category._id} className='w-100 px-1 rounded-pill mx-3' height={200} src={category.image}/>
       <h2 className='text-center h6 text-main p-2 key'>{category.name.split(" ").slice(0,3).join(' ')}</h2>
       
       

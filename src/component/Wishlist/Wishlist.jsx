@@ -23,14 +23,14 @@ export default function Wishlist() {
 
   async function addProduct(productId){
     try {
-      setisLoading(true)
+      
       
       let {data} = await addToCart(productId)
      
      
-     setisLoading(false)
-    if(data.status==='success'){
      
+    if(data?.status==='success'){
+      setnumberitems(data?.numOfCartItems)
       toast.success('product succefully added',{
         duration: 3000 ,
         position: "Bottom left",
@@ -40,7 +40,7 @@ export default function Wishlist() {
   
       })
 
-      // setWishlistCount(data?.count)
+      
   
     }else{
       
@@ -65,8 +65,9 @@ async function getLoggedWishCart(){
   setisLoading(true)
  let{data}= await addWishList();
  
-
+console.log(data);
 setwishItems(data)
+
 setisLoading(false)
 
 
@@ -86,20 +87,20 @@ useEffect(()=>{
 
 
 
+
+
 async function deleteProduct(id){
   try {
-    // setisLoading(false)
-   
+  setisLoading(true)
   let{data}= await deleteWish(id);
   setwishItems(data)
-  
-  // setisLoading(false)
+  setWishlistCount(data?.count)
+    await getLoggedWishCart()
 
   
-  await getLoggedWishCart()
-  // setWishlistCount(data?.count)
-  // setisLoading(false)
-
+  
+ 
+  setisLoading(false)
 
   } catch (error) {
     console.log('error',error)
@@ -160,7 +161,7 @@ return   <>
             <div className="d-flex justify-content-between align-items-center">
               <div>
                 <h3 className="h6">
-                  {item.title.split(" ").splice(0,2).join(' ')}
+                  {item.title}
                 </h3>
                 <h6 className="text-main fw-semibold">
                   Price : {item.price} EGP
@@ -179,7 +180,7 @@ return   <>
                   onClick={() => addProduct(item.id)}
                   className="btn btn-outline bg-main text-white"
                 >
-                  add To Cart
+                  + Add To Cart
                 </button>
               </div>
             </div>

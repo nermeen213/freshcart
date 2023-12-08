@@ -14,6 +14,7 @@ export default function SpecificCategories() {
     
     let{data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/categories/${id}/subcategories`)
     setsupcategories(data)
+    console.log(data);
     
 
     }

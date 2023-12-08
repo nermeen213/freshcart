@@ -130,7 +130,7 @@ export default function FeaturedProduct() {
 
       </Link>
 
-      <button onClick={()=>addProduct(product._id)} className='btn bg-main text-white btn-sm mt-2 w-100  '>Add To Card</button>
+      <button onClick={()=>addProduct(product._id)} className='btn bg-main text-white btn-sm mt-2 w-100  '>+ Add To Card</button>
 
       </div>
       

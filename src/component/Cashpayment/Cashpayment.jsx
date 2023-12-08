@@ -21,9 +21,9 @@ let navigate=useNavigate();
 
   async function handlecash(values){
     try {
-      
+      setisLoading(true)
       let {data}= await cashPayment(cardId , values)      
-        if(data?.status==='success'){
+        if(data?.status == 'success'){
           console.log(data);
           toast.success('The payment process was completed successfully',{
             duration: 3000 ,
@@ -32,12 +32,13 @@ let navigate=useNavigate();
             
             
           })
+          setisLoading(false)
           setnumberitems(0)
           navigate('/allorders')
       
         }else{
           
-          toast.error('the addition operation failed')
+          toast.error('the addition operation failed Try again')
           
         }
         
@@ -98,7 +99,7 @@ let navigate=useNavigate();
       {formik.errors.city&& formik.touched.city?<div className='alert mt-2 p-2 alert-danger'>{formik.errors.city}</div>:''}
       
        {/* <button onClick={handleOnSubmit} className='btn bg-main text-white m-2 ' type='submit' >online payment</button> */}
-       {isLoading?<button  disabled={!(formik.isValid && formik.dirty)} type='button' className='btn bg-main text-white '>
+       {isLoading?<button onClick={handlecash}  disabled={!(formik.isValid && formik.dirty)} type='button' className='btn bg-main text-white '>
        <Audio
   height="20"
   width="80"
@@ -113,6 +114,8 @@ let navigate=useNavigate();
       
       </> 
 }
+
+
 
 
     </form>

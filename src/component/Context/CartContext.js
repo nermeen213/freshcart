@@ -5,6 +5,7 @@ import axios from 'axios';
 export let CartContext=createContext();
 
 
+
 export default function CartContextProvider(props){
 
 const [wishlistCount, setWishlistCount] = useState(0);
@@ -170,8 +171,7 @@ function getCategory(id){
    },[])
 
    //*************************payment ************************************** */
-
-
+   
 
  return <CartContext.Provider value={{cashPayment,setWishlistCount,wishlistCount,cardId,onlinePayment,deleteWish,addWishList,addWishList,setnumberitems,numberitems,addToCart,getLoggedUserCart,removeProduct ,updateProduct,clearCard,getWishlist}}>
     {props.children}
