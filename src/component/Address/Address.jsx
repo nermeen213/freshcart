@@ -25,19 +25,31 @@ export default function Address() {
 
     try {
       setisLoading(true)
-      let response = await onlinePayment(cardId,'http://localhost:3000',values)
-      console.log(response);
-      toast.success('The payment process was completed successfully',{
-        duration: 3000 ,
-        position: "Bottom right",
-        className: 'toast-message',
+      let {data} = await onlinePayment(cardId,'http://localhost:3000',values)
+      if (data?.status == 'success') {
+        toast.success('The payment process was completed successfully',{
+            duration: 3000 ,
+            position: "Bottom right",
+            className: 'toast-message',
+            
+            
+          })
+          window.location.href = data?.session.url;
+          setnumberitems(0)
+         
+      }
+     
+      // toast.success('The payment process was completed successfully',{
+      //   duration: 3000 ,
+      //   position: "Bottom right",
+      //   className: 'toast-message',
         
         
-      })
+      // })
       
-      setnumberitems(0)
-      window.location.href = response?.data?.session.url;
       
+      // window.location.href = data?.session.url;
+      // setnumberitems(0)
       
      
      
