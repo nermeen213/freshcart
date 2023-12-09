@@ -140,7 +140,7 @@ if(!numberitems){
       
 )}
 
-       <Link className='btn bg-main text-white btn-sm mt-2 w-100 fw-bolder  ' to={'/address'}>Online payment</Link>
+       {/* <Link className='btn bg-main text-white btn-sm mt-2 w-100 fw-bolder  ' to={'/address'}>Online payment</Link> */}
        <Link className='btn bg-main text-white btn-sm mt-2 w-100 fw-bolder  ' to={'/cashPayment'}>Cash payment</Link>
 
 

@@ -62,13 +62,13 @@ export default function Wishlist() {
 
 async function getLoggedWishCart(){
 
-  setisLoading(true)
+  // setisLoading(true)
  let{data}= await addWishList();
- 
+//  setisLoading(false)
 console.log(data);
 setwishItems(data)
 
-setisLoading(false)
+
 
 
 if (data?.status == "success") {
@@ -91,16 +91,23 @@ useEffect(()=>{
 
 async function deleteProduct(id){
   try {
-  setisLoading(true)
+  // setisLoading(true)
   let{data}= await deleteWish(id);
-  setwishItems(data)
-  setWishlistCount(data?.count)
-    await getLoggedWishCart()
+  await getLoggedWishCart()
+  if (data.status === "success") {
+    toast.success("removed successfully from your Whishlist", {
+      duration: 5000,
+      position: "bottom-right",
+    });
+  }
+  // setwishItems(data)
+  // setWishlistCount(data?.count)
+  //   await getLoggedWishCart()
 
   
   
  
-  setisLoading(false)
+  // setisLoading(false)
 
   } catch (error) {
     console.log('error',error)
@@ -114,7 +121,7 @@ return   <>
   <meta name="description" content="" />
   <title>Wish List</title>
 </Helmet>
-{isLoading && (
+{wishItems==null && (
   <div className="load d-flex align-items-center justify-content-center">
     <BallTriangle
       height={100}
@@ -128,7 +135,7 @@ return   <>
     />
   </div>
 )}
-{!isLoading && (
+{wishItems!=null&& (
   <>
     <div className="p-2 mb-3 mt-4 bg-main-light overflow-hidden">
      

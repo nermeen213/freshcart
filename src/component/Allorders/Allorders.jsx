@@ -28,7 +28,7 @@ export default function Allorders() {
     
    setuserOrders(data)
 
-
+   
    
 
   } catch (error) {
@@ -61,24 +61,24 @@ export default function Allorders() {
   <meta name="description" content="" />
   <title>all orders</title>
 </Helmet>
-   <div className="row g-3">
+   <div className="row g-5 ">
     <h2 className='fw-bolder h1 text-center text-main font fs-3'> All Orders</h2>
     {userOrders.map(function(order,idx){
-      return <div key={idx} className='col-md-6 '>
+      return <div key={idx} className='col-md-12 m-3 '>
 
         <div className='bg-main-light'>
-
-          <div className="p-3">
-            <div className="row g-1 ">
-            <div className='mx-3 box1'>
-          <h6 className='  text-dark fw-bolder '>user phone : {order.shippingAddress.phone}</h6>
+         <h2 className='text-center'>order:{idx+1} </h2>
+        
+           
+            <div className='p-3 mmm bw-bolder '>
+          <h6 className=' fw-bolder dark '>user phone : {order.shippingAddress.phone}</h6>
           <h6 className='
-            text-dark fw-bolder ' > details : {order.shippingAddress.details}</h6>
+            text-dark fw-bolder' > details : {order.shippingAddress.details}</h6>
           <h6 className='
-            text-dark fw-bolder '>at : {order.shippingAddress.city}</h6>
+            text-dark fw-bolder'>at : {order.shippingAddress.city}</h6>
           
           <h6 className='
-           text-dark fw-bolder '> Payment Methoud : {order.paymentMethodType}</h6>
+           text-dark fw-bolder'> Payment Methoud : {order.paymentMethodType}</h6>
           <h6 className='
            text-dark fw-bolder '>Totel Price : {order.totalOrderPrice} EGP</h6>
 
@@ -87,22 +87,27 @@ export default function Allorders() {
              
             {order.cartItems?.map(function(item , index){
 
-                   return <div className='col-sm-4 item product productCAT box1'>
-                    <div key={index} className=' my-1 item'>
-                  <img src={item.product.imageCover} alt="" className='w-100' />
+                   return <div className='row d-flex align-items-center text-main p-3 m-0  border-bottom '>
+                    <div key={index} className='col-sm-2 '>
+                  <img src={item.product.imageCover} alt="" className='w-100 ' />
+                   </div>
+                   <div className='col-sm-4'>
 
-              <h6>Title : {item.product.title.split(" ").splice(0 , 2).join(" ")}</h6>
+                   <h6>Title : {item.product.title.split(" ").splice(0 , 2).join(" ")}</h6>
                   <p>count : {item.count}</p>
                      <p>price : {item.price}</p>
+                   </div>
+
+             
              </div>
 
-                   </div>
+                  
 
                       })}
 
 
-            </div>
-          </div>
+           
+         
           
          
         </div>
