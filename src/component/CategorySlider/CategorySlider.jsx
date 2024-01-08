@@ -27,8 +27,8 @@ let {isError,isLoading,data} = useQuery('gategorySlider',gategorySlider)
 
 
   return <>
-  <h2 className='pt-5 fs-4 fw-bolder'> Shop Popular Categories</h2>
-    {data?.data.data? <div className='py-4 pt-2 '>
+  <h2 className='pt-5 fs-4 fw-bolder vis'> Shop Popular Categories</h2>
+    {data?.data.data? <div className='py-4 pt-2 vis'>
       <Slider {...settings}>
       {data?.data.data.map((category)=><>
       <img key={category._id} className='w-100 px-1 rounded-pill mx-3' height={200} src={category.image}/>

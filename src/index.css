@@ -64,6 +64,7 @@
    
 }
 
+
 .wish {
     color: red !important;
 }
@@ -162,7 +163,12 @@ a , a:hover{
 
 
 
+@media (max-width: 1105.98px){
+    .vis {
+        display: none;
 
+    }
+}
 
 @media (max-width: 900.98px){
     .key {
